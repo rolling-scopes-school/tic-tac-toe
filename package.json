@@ -1,0 +1,19 @@
+{
+    "name": "tic-tac-toe",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "test": "mocha -r ./test/setup-mocha.js",
+        "start": "webpack-dev-server"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "mocha": "^3.0.2",
+        "sinon": "^1.17.5",
+        "sinon-chai": "^2.8.0",
+        "webpack": "^1.13.1",
+        "webpack-dev-server": "^1.14.1"
+    }
+}
