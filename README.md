@@ -22,7 +22,7 @@ should return true if game is finished (e.g. there is a winner or it is a draw)
 should return winner symbol (`x` or `o`) or null if there is no winner yet
 
 ##### `noMoreTurns()`
-should return true if there is no more fields to place a `x` or `y`
+should return true if there is no more fields to place a `x` or `o`
 
 ##### `isDraw()`
 should return true if there is no more turns and no winner
