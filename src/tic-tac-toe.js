@@ -1,6 +1,6 @@
 class TicTacToe {
     constructor() {
-this.sign = 'x';
+this.currentSymbol = 'x';
     this.succ = undefined;
     this.row0 = {
         a: null,
@@ -23,14 +23,14 @@ this.sign = 'x';
 }
 
  getCurrentPlayerSymbol() {     
-return this.sign;
+return this.currentSymbol;
         }
 
     nextTurn(rowIndex, columnIndex) {
         if (rowIndex === 0) {
             if (columnIndex == 0 ) {   
                 if (this.row0.a == null) {
-                 this.row0.a = this.sign;
+                 this.row0.a = this.currentSymbol;
                  this.succ = 2;
                 
                  }
@@ -38,7 +38,7 @@ return this.sign;
 
                  if (columnIndex == 1) {
                    if (this.row0.b == null) {
-                 this.row0.b = this.sign;
+                 this.row0.b = this.currentSymbol;
                  this.succ = 2;
                 
                  }  
@@ -46,7 +46,7 @@ return this.sign;
             
           if (columnIndex == 2 ) {
                 if (this.row0.c == null) {
-                 this.row0.c = this.sign;
+                 this.row0.c = this.currentSymbol;
                  this.succ = 2;
                 
                  }
@@ -56,14 +56,14 @@ return this.sign;
      if (rowIndex == 1) {
             if (columnIndex == 0 ) {
                 if (this.row1.a == null) {
-                 this.row1.a = this.sign;
+                 this.row1.a = this.currentSymbol;
                  this.succ = 2;
                  }
             } ;
 
          if (columnIndex == 1) {
                    if (this.row1.b == null) {
-                 this.row1.b = this.sign;
+                 this.row1.b = this.currentSymbol;
                  this.succ = 2;
                  }  
              };
@@ -71,7 +71,7 @@ return this.sign;
           if (columnIndex == 2 ) {
                 
                 if (this.row1.c == null) {
-                 this.row1.c = this.sign;
+                 this.row1.c = this.currentSymbol;
                  this.succ = 2;
                  }
             } ;     
@@ -83,14 +83,14 @@ return this.sign;
             if (columnIndex == 0 ) {
                 
                 if (this.row2.a == null) {
-                 this.row2.a = this.sign;
+                 this.row2.a = this.currentSymbol;
                  this.succ = 2;
                  }
             } ;
 
                  if (columnIndex == 1) {
                    if (this.row2.b == null) {
-                 this.row2.b = this.sign;
+                 this.row2.b = this.currentSymbol;
                  this.succ = 2;
                  }  
              };
@@ -98,22 +98,22 @@ return this.sign;
           if (columnIndex == 2 ) {
                 
                 if (this.row2.c == null) {
-                 this.row2.c = this.sign;
+                 this.row2.c = this.currentSymbol;
                  this.succ = 2;
                  }
             } ;     
         };
         
  if (this.succ) {
-     if (this.sign === 'o' ) {
-    this.sign = 'x';
+     if (this.currentSymbol === 'o' ) {
+    this.currentSymbol = 'x';
 this.succ = undefined;
 } else {
-    this.sign = 'o';
+    this.currentSymbol = 'o';
     this.succ = undefined;
 }    
  }       
-        return this.sign;
+        return this.currentSymbol;
     }
 
     isFinished() {
