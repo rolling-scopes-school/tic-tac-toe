@@ -74,3 +74,5 @@ class TicTacToe {
         return this.gameField[rowIndex][colIndex];
     }
 }
+
+module.exports = TicTacToe;
