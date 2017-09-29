@@ -1,221 +1,76 @@
+
 class TicTacToe {
     constructor() {
-this.currentSymbol = 'x';
-    this.succ = undefined;
-    this.row0 = {
-        a: null,
-        b: null,
-        c: null
- };
-        
-        this.row1 = {
-        a: null,
-        b: null,
-        c: null
- };
-        
-        this.row2 = {
-        a: null,
-        b: null,
-        c: null
- };
-    
-}
-
- getCurrentPlayerSymbol() {     
-return this.currentSymbol;
+        this.turn = 0;
+        this.currentPlayer = null;
+        this.gameField = new Array();
+        for (let i = 0; i < 3; i++) {
+            this.gameField[i] = new Array();
+            for (let j = 0; j < 3; j++) {
+                this.gameField[i][j] = null;
+            }
         }
+    }
+
+    getCurrentPlayerSymbol() {
+        if (!this.currentPlayer) {
+            return 'x';
+        }
+        else if (this.currentPlayer == 'o') {
+            return 'x';
+        }
+        else {
+            return 'o';
+        }
+    }
 
     nextTurn(rowIndex, columnIndex) {
-        if (rowIndex === 0) {
-            if (columnIndex == 0 ) {   
-                if (this.row0.a == null) {
-                 this.row0.a = this.currentSymbol;
-                 this.succ = 2;
-                
-                 }
-            } ;
-
-                 if (columnIndex == 1) {
-                   if (this.row0.b == null) {
-                 this.row0.b = this.currentSymbol;
-                 this.succ = 2;
-                
-                 }  
-             };
-            
-          if (columnIndex == 2 ) {
-                if (this.row0.c == null) {
-                 this.row0.c = this.currentSymbol;
-                 this.succ = 2;
-                
-                 }
-            } ;     
-        };
-        
-     if (rowIndex == 1) {
-            if (columnIndex == 0 ) {
-                if (this.row1.a == null) {
-                 this.row1.a = this.currentSymbol;
-                 this.succ = 2;
-                 }
-            } ;
-
-         if (columnIndex == 1) {
-                   if (this.row1.b == null) {
-                 this.row1.b = this.currentSymbol;
-                 this.succ = 2;
-                 }  
-             };
-            
-          if (columnIndex == 2 ) {
-                
-                if (this.row1.c == null) {
-                 this.row1.c = this.currentSymbol;
-                 this.succ = 2;
-                 }
-            } ;     
-        };
-        
-        
-              if (rowIndex == 2) {
-           
-            if (columnIndex == 0 ) {
-                
-                if (this.row2.a == null) {
-                 this.row2.a = this.currentSymbol;
-                 this.succ = 2;
-                 }
-            } ;
-
-                 if (columnIndex == 1) {
-                   if (this.row2.b == null) {
-                 this.row2.b = this.currentSymbol;
-                 this.succ = 2;
-                 }  
-             };
-            
-          if (columnIndex == 2 ) {
-                
-                if (this.row2.c == null) {
-                 this.row2.c = this.currentSymbol;
-                 this.succ = 2;
-                 }
-            } ;     
-        };
-        
- if (this.succ) {
-     if (this.currentSymbol === 'o' ) {
-    this.currentSymbol = 'x';
-this.succ = undefined;
-} else {
-    this.currentSymbol = 'o';
-    this.succ = undefined;
-}    
- }       
-        return this.currentSymbol;
+        if (!this.getFieldValue(rowIndex,columnIndex)) {
+            this.currentPlayer = this.getCurrentPlayerSymbol();
+            this.gameField[rowIndex][columnIndex] = this.currentPlayer;
+            this.turn++;
+        }
     }
 
     isFinished() {
-        if ( this.row0.a == this.row0.b && this.row0.a == this.row0.c && this.row0.a !==null)
-              return true;
-        if ( this.row1.a == this.row1.b && this.row1.a == this.row1.c && this.row1.a !==null )
-              return true;
-        if (  this.row2.a == this.row2.b && this.row2.a == this.row2.c && this.row2.a !==null)
-              return true;
-        if ( this.row0.a == this.row1.a && this.row0.a == this.row2.a && this.row0.a !==null)
-              return true;
-        if ( this.row0.b == this.row1.b && this.row0.b == this.row2.b && this.row0.b !==null)
-              return true;
-        if ( this.row0.c == this.row1.c && this.row0.c == this.row2.c && this.row0.c !==null)
-              return true;
-        if ( this.row0.a == this.row1.b && this.row0.a == this.row2.c && this.row0.a !==null)
-              return true;
-        if ( this.row0.c == this.row1.b && this.row0.c == this.row2.a && this.row0.c !==null)
-              return true;
-        
-        if (this.row0.a !== null && this.row0.b !== null && this.row0.c !== null && this.row1.a !== null && this.row1.b !== null && this.row1.c !== null && this.row2.a !== null && this.row2.b !== null && this.row2.c !== null )
-            return true;
-        return false;
+        return (this.getWinner() || this.isDraw()) ? true : false;
     }
 
     getWinner() {
-        
-          if ( this.row0.a == this.row0.b && this.row0.a == this.row0.c && this.row0.a !==null)
-              return this.row0.a;
-        if ( this.row1.a == this.row1.b && this.row1.a == this.row1.c && this.row1.a !==null )
-              return this.row1.a;
-        if (  this.row2.a == this.row2.b && this.row2.a == this.row2.c && this.row2.a !==null)
-              return this.row2.a;
-        if ( this.row0.a == this.row1.a && this.row0.a == this.row2.a && this.row0.a !==null)
-              return this.row0.a;
-        if ( this.row0.b == this.row1.b && this.row0.b == this.row2.b && this.row0.b !==null)
-              return this.row0.b;
-        if ( this.row0.c == this.row1.c && this.row0.c == this.row2.c && this.row0.c !==null)
-              return this.row0.c;
-        if ( this.row0.a == this.row1.b && this.row0.a == this.row2.c && this.row0.a !==null)
-              return this.row0.a;
-        if ( this.row0.c == this.row1.b && this.row0.c == this.row2.a && this.row0.c !==null)
-              return this.row0.c;
+        let x = 0, y = 0, zx = 0, zy = 0;
+        for (let i = 0; i < 3; i ++) {
+            x = 0;
+            y = 0;         
+            if (this.gameField[i][i] === this.currentPlayer) {
+                zy++;
+            }
+            if (this.gameField[i][2-i] === this.currentPlayer) {
+                zx++;
+            }
+            for (let j = 0; j < 3; j++) {
+                if (this.gameField[i][j] === this.currentPlayer) {
+                    x++;
+                }
+                if(this.gameField[j][i] === this.currentPlayer) {
+                    y++;
+                }
+            }
+            if (x === 3 || y === 3) return this.currentPlayer;
+        }
+        if (zy === 3 || zx === 3) return this.currentPlayer;
+
         return null;
     }
 
     noMoreTurns() {
-if (this.row0.a !== null && this.row0.b !== null && this.row0.c !== null && this.row1.a !== null && this.row1.b !== null && this.row1.c !== null &&this.row1.a !== null && this.row1.b !== null && this.row1.c !== null ) {
-    return true;
-} else {
-    return false;}
+        return (this.turn === 9) ? true : false;
     }
 
     isDraw() {
-        if ( this.row0.a == this.row0.b && this.row0.a == this.row0.c ||
-         this.row1.a == this.row1.b && this.row1.a == this.row1.c ||
-         this.row2.a == this.row2.b && this.row2.a == this.row2.c ||
-         this.row0.a == this.row1.a && this.row0.a == this.row2.a ||
-         this.row0.b == this.row1.b && this.row0.b == this.row2.b ||
-         this.row0.c == this.row1.c && this.row0.c == this.row2.c ||
-         this.row0.a == this.row1.b && this.row0.a == this.row2.c ||
-         this.row0.c == this.row1.b && this.row0.c == this.row2.a 
-       ) {
-            return false;
-        }
-        
-        if (this.row0.a == null || this.row0.b == null || this.row0.c == null || this.row1.a == null || this.row1.b == null || this.row1.c == null || this.row2.a == null || this.row2.b == null || this.row2.c == null )
-  {
-            return false;
-        }
-        return true;
-    }
-    
-    getFieldValue(rowIndex, colIndex) {
-        
-if (rowIndex === 0) {
-            if (colIndex == 0 ) 
-                return this.row0.a;
-                 
-             if (colIndex == 1) 
-                { return this.row0.b} else 
-          return this.row0.c   
-        };
- if (rowIndex === 1) {
-           
-            if (colIndex == 0 ) 
-                return this.row1.a;
-                 
-             if (colIndex == 1) 
-             {return this.row1.b} else 
-          return this.row1.c   
-        };       
-  if (rowIndex === 2) {
-           
-            if (colIndex == 0 ) 
-                return this.row2.a;
-                 
-             if (colIndex == 1) 
-             {return this.row2.b} else 
-          return this.row2.c   
-        };      
-        };    
+        return (this.noMoreTurns() && !this.getWinner()) ? true : false;
     }
 
-module.exports = TicTacToe;
+    getFieldValue(rowIndex, colIndex) {
+        return this.gameField[rowIndex][colIndex];
+    }
+}
