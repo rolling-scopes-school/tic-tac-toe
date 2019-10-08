@@ -4,9 +4,13 @@
     "description": "",
     "scripts": {
         "test": "mocha -r ./test/setup-mocha.js",
-        "start": "webpack-dev-server"
+        "start": "webpack-dev-server",
+        "postinstall": "node postinstall.js"
     },
     "author": "",
+    "engines": {
+      "node": "<=10"
+    },
     "license": "ISC",
     "devDependencies": {
         "chai": "^3.5.0",
@@ -15,5 +19,9 @@
         "sinon-chai": "^2.8.0",
         "webpack": "^1.13.1",
         "webpack-dev-server": "^1.14.1"
+    },
+    "dependencies": {
+        "colors": "^1.4.0",
+        "semver": "^6.3.0"
     }
 }
