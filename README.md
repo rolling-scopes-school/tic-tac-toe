@@ -56,3 +56,4 @@ should return `matrix[row][col]` value (if any) or `null`
 ---
 
 © [lesnitsky](https://github.com/lesnitsky)
+[![Run on Repl.it](https://repl.it/badge/github/rolling-scopes-school/tic-tac-toe)](https://repl.it/github/rolling-scopes-school/tic-tac-toe)
