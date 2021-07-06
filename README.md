@@ -43,7 +43,7 @@ should return `matrix[row][col]` value (if any) or `null`
 
 ### Submit to [rs app](https://app.rs.school)
 1. Open [rs app](https://app.rs.school) and login
-2. Go to [submit task page](https://app.rs.school/course/submit-task?course=rs-2019-q3)
+2. Open `RS APP` and click `Auto Test`
 3. Select your task (tick-tac-toe)
 4. Press the submit button and enjoy
 
