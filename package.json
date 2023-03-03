@@ -14,11 +14,11 @@
     "license": "ISC",
     "devDependencies": {
         "chai": "^3.5.0",
-        "mocha": "^3.0.2",
+        "mocha": "^10.2.0",
         "sinon": "^1.17.5",
         "sinon-chai": "^2.8.0",
-        "webpack": "^1.13.1",
-        "webpack-dev-server": "^1.14.1"
+        "webpack": "^5.75.0",
+        "webpack-dev-server": "^4.11.1"
     },
     "dependencies": {
         "colors": "^1.4.0",
